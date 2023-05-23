@@ -2,6 +2,7 @@ package ma.uca.gfl.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Etablissement {
 	private String adresse;
 
 	@OneToMany(mappedBy = "etablissement")
+	@JsonIgnore
 	private List<Laboratoire> laboratoires;
 
 }
