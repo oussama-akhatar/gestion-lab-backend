@@ -3,6 +3,7 @@ package ma.uca.gfl.controllers;
 import ma.uca.gfl.entities.Laboratoire;
 import ma.uca.gfl.services.EtablissementService;
 import ma.uca.gfl.services.LaboratoireService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,8 @@ import java.util.List;
 @RequestMapping("/laboratoire")
 public class LaboratoireController {
     private final LaboratoireService laboratoireService;
-    public LaboratoireController(LaboratoireService laboratoireService, EtablissementService etablissementService) {
+    @Autowired
+    public LaboratoireController(LaboratoireService laboratoireService) {
         this.laboratoireService = laboratoireService;
     }
     @GetMapping("/all")

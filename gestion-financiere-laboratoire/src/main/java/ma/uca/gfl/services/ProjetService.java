@@ -1,11 +1,12 @@
 package ma.uca.gfl.services;
 
-import ma.uca.gfl.entities.Etablissement;
 import ma.uca.gfl.entities.Projet;
 import ma.uca.gfl.repositories.ProjetRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProjetService {
     private final ProjetRepository projetRepository;
 

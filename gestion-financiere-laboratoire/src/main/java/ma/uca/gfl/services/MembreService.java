@@ -4,9 +4,11 @@ import ma.uca.gfl.entities.ExpressionBesoin;
 import ma.uca.gfl.entities.Membre;
 import ma.uca.gfl.repositories.MembreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MembreService {
     private final MembreRepository membreRepository;
 
