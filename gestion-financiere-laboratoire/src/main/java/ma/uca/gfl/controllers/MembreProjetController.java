@@ -1,6 +1,5 @@
 package ma.uca.gfl.controllers;
 
-import ma.uca.gfl.entities.Etablissement;
 import ma.uca.gfl.entities.MembreProjet;
 import ma.uca.gfl.services.MembreProjetService;
 import org.springframework.http.HttpStatus;

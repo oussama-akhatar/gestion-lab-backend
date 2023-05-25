@@ -1,7 +1,6 @@
 package ma.uca.gfl.controllers;
 
 import ma.uca.gfl.entities.Laboratoire;
-import ma.uca.gfl.services.EtablissementService;
 import ma.uca.gfl.services.LaboratoireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

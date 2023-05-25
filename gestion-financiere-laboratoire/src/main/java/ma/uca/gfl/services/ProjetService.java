@@ -2,6 +2,7 @@ package ma.uca.gfl.services;
 
 import ma.uca.gfl.entities.Projet;
 import ma.uca.gfl.repositories.ProjetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 @Service
 public class ProjetService {
     private final ProjetRepository projetRepository;
-
+    @Autowired
     public ProjetService(ProjetRepository projetRepository) {
         this.projetRepository = projetRepository;
     }

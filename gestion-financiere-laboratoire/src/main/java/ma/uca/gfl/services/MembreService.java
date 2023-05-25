@@ -1,6 +1,5 @@
 package ma.uca.gfl.services;
 
-import ma.uca.gfl.entities.ExpressionBesoin;
 import ma.uca.gfl.entities.Membre;
 import ma.uca.gfl.repositories.MembreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import java.util.List;
 public class MembreService {
     private final MembreRepository membreRepository;
 
+    @Autowired
     public MembreService(MembreRepository membreRepository) {
         this.membreRepository = membreRepository;
     }

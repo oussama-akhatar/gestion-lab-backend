@@ -1,6 +1,5 @@
 package ma.uca.gfl.controllers;
 
-import ma.uca.gfl.entities.Laboratoire;
 import ma.uca.gfl.entities.TypeBesoin;
 import ma.uca.gfl.services.TypeBesoinService;
 import org.springframework.http.HttpStatus;

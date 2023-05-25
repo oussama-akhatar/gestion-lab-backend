@@ -1,8 +1,8 @@
 package ma.uca.gfl.services;
 
-import ma.uca.gfl.entities.Etablissement;
 import ma.uca.gfl.entities.MembreDotationUCARech;
 import ma.uca.gfl.repositories.MembreDotationUCARechRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +11,7 @@ import java.util.List;
 public class MembreDotationUCARechService {
     private final MembreDotationUCARechRepository dotationUCARechRepository;
 
+    @Autowired
     public MembreDotationUCARechService(MembreDotationUCARechRepository membreDotationUCARechRepository){
         this.dotationUCARechRepository = membreDotationUCARechRepository;
     }

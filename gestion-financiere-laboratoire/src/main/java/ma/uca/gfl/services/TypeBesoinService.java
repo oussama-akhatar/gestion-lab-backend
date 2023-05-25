@@ -1,8 +1,8 @@
 package ma.uca.gfl.services;
 
-import ma.uca.gfl.entities.Responsable;
 import ma.uca.gfl.entities.TypeBesoin;
 import ma.uca.gfl.repositories.TypeBesoinRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class TypeBesoinService {
     private final TypeBesoinRepository typeBesoinRepository;
-
+    @Autowired
     public TypeBesoinService(TypeBesoinRepository typeBesoinRepository) {
         this.typeBesoinRepository = typeBesoinRepository;
     }
