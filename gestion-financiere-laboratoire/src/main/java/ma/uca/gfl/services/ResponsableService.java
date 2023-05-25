@@ -3,9 +3,11 @@ package ma.uca.gfl.services;
 import ma.uca.gfl.entities.Projet;
 import ma.uca.gfl.entities.Responsable;
 import ma.uca.gfl.repositories.ResponsableRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ResponsableService {
     private final ResponsableRepository responsableRepository;
 

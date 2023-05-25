@@ -26,12 +26,12 @@ public class EtablissementController {
         return new ResponseEntity<>(etablissement, HttpStatus.OK);
     }
     @PostMapping("/add")
-    public ResponseEntity<Etablissement> addEmployee(@RequestBody Etablissement etablissement) {
+    public ResponseEntity<Etablissement> addEtablissement(@RequestBody Etablissement etablissement) {
         Etablissement newEtablissement = etablissementService.addEtablissement(etablissement);
         return new ResponseEntity<>(newEtablissement, HttpStatus.CREATED);
     }
     @PutMapping("/update")
-    public ResponseEntity<Etablissement> updateEmployee(@RequestBody Etablissement etablissement) {
+    public ResponseEntity<Etablissement> updateEtablissement(@RequestBody Etablissement etablissement) {
         Etablissement updateEtablissement = etablissementService.updateEtablissement(etablissement);
         return new ResponseEntity<>(updateEtablissement, HttpStatus.OK);
     }
