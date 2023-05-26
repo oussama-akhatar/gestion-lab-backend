@@ -3,12 +3,11 @@ package ma.uca.gfl.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -19,8 +18,8 @@ public class Etablissement {
 	private String intitule;
 	private String adresse;
 
-	@OneToMany(mappedBy = "etablissement")
-	@JsonIgnore
+	@OneToMany(mappedBy = "etablissement" ,cascade = CascadeType.ALL)
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	private List<Laboratoire> laboratoires;
 
 }

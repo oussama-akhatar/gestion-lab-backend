@@ -4,6 +4,7 @@ import ma.uca.gfl.entities.MembreDotationUCARech;
 import ma.uca.gfl.repositories.MembreDotationUCARechRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,9 +30,10 @@ public class MembreDotationUCARechService {
     }
 
     public MembreDotationUCARech findMembreDotationUCARechServiceById(Long id){
-        return dotationUCARechRepository.findMembreDotationUCARechById(id).get();
+        return dotationUCARechRepository.findMembreDotationUCARechById(id).orElseThrow();
     }
 
+    @Transactional
     public void deleteMembreDotationUCARechService(Long id) {
         dotationUCARechRepository.deleteMembreDotationUCARechById(id);
     }

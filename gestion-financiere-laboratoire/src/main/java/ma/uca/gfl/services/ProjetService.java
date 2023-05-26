@@ -4,6 +4,7 @@ import ma.uca.gfl.entities.Projet;
 import ma.uca.gfl.repositories.ProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,9 +29,10 @@ public class ProjetService {
     }
 
     public Projet findProjetById(Long id){
-        return projetRepository.findProjetById(id).get();
+        return projetRepository.findProjetById(id).orElseThrow();
     }
 
+    @Transactional
     public void deleteProjet(Long id) {
         projetRepository.deleteProjetById(id);
     }

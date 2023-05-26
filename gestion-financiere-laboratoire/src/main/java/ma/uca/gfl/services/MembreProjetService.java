@@ -4,6 +4,7 @@ import ma.uca.gfl.entities.MembreProjet;
 import ma.uca.gfl.repositories.MembreProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,9 +24,10 @@ public class MembreProjetService {
     public MembreProjet updateMembreProjet(MembreProjet membreProjet){return membreProjetRepository.save(membreProjet);}
 
     public MembreProjet findMembreProjetById(Long id){
-        return membreProjetRepository.findMembreProjetById(id).get();
+        return membreProjetRepository.findMembreProjetById(id).orElseThrow();
     }
 
+    @Transactional
     public void deleteMembreProjet(Long id) {
         membreProjetRepository.deleteMembreProjetById(id);
     }

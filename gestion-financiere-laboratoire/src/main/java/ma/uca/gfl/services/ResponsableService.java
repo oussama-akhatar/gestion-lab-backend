@@ -4,6 +4,7 @@ import ma.uca.gfl.entities.Responsable;
 import ma.uca.gfl.repositories.ResponsableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,9 +29,10 @@ public class ResponsableService {
     }
 
     public Responsable findResponsableById(Long id){
-        return responsableRepository.findResponsableById(id).get();
+        return responsableRepository.findResponsableById(id).orElseThrow();
     }
 
+    @Transactional
     public void deleteResponsable(Long id) {
         responsableRepository.deleteResponsableById(id);
     }

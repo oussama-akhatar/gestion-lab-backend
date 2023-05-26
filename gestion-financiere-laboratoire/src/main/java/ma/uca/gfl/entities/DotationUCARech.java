@@ -2,12 +2,11 @@ package ma.uca.gfl.entities;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -18,7 +17,8 @@ public class DotationUCARech {
 	private String annee;
 	private String dotateurBase;
 
-	@OneToMany(mappedBy = "dotationUCARech")
+	@OneToMany(mappedBy = "dotationUCARech", cascade = CascadeType.ALL)
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	private List<MembreDotationUCARech> membreDotationUCARechs;
 
 }

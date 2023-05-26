@@ -2,15 +2,13 @@ package ma.uca.gfl.entities;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -24,9 +22,11 @@ public class Laboratoire {
 	private String departement;
 
 	@ManyToOne
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Etablissement etablissement;
 
-	@OneToMany(mappedBy = "laboratoire")
+	@OneToMany(mappedBy = "laboratoire", cascade = CascadeType.ALL)
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	private List<Membre> membres;
 
 }
