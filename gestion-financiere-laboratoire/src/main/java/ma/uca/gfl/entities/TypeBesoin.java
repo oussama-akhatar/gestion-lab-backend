@@ -16,6 +16,6 @@ public class TypeBesoin {
 	private String description;
 
 	@OneToMany(mappedBy = "typeBesoin", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<ExpressionBesoin> expressionBesoins;
 }

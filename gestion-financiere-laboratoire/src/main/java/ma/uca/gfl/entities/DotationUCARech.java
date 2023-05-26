@@ -18,7 +18,7 @@ public class DotationUCARech {
 	private String dotateurBase;
 
 	@OneToMany(mappedBy = "dotationUCARech", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<MembreDotationUCARech> membreDotationUCARechs;
 
 }

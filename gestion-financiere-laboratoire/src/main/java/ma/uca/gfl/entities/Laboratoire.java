@@ -22,11 +22,11 @@ public class Laboratoire {
 	private String departement;
 
 	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	private Etablissement etablissement;
 
 	@OneToMany(mappedBy = "laboratoire", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<Membre> membres;
 
 }

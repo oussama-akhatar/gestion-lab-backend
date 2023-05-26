@@ -23,6 +23,6 @@ public class Projet {
 	private double budget;
 
 	@OneToMany(mappedBy = "projet", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<MembreProjet> membreProjets;
 }

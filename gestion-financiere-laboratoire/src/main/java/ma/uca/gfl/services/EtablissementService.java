@@ -21,6 +21,9 @@ public class EtablissementService {
     public Etablissement findEtablissementById(Long id){ return etablissementRepository.findEtablissementById(id).orElseThrow(); }
     @Transactional
     public void deleteEtalissement(Long id) {
-        etablissementRepository.deleteEtablissementById(id);
+        boolean etablissement = etablissementRepository.findEtablissementById(id).isPresent();
+        if (etablissement) {
+            etablissementRepository.deleteEtablissementById(id);
+        }
     }
 }

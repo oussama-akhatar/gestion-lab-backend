@@ -24,19 +24,19 @@ public class Membre {
 	private boolean isDirecteur;
 
 	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	private Laboratoire laboratoire;
 
 	@OneToMany(mappedBy = "membre", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<MembreDotationUCARech> membreDotationUCARechs;
 
 	@OneToMany(mappedBy = "membre", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<MembreProjet> membreProjets;
 
 	@OneToMany(mappedBy = "membre", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<ExpressionBesoin> expressionBesoins;
 
 }

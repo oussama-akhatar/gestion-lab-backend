@@ -18,10 +18,10 @@ public class MembreProjet {
 	private boolean isResponsableProjet;
 
 	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	private Projet projet;
 
 	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	private Membre membre;
 }

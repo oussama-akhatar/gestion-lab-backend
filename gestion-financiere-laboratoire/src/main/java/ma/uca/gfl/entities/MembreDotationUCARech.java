@@ -17,10 +17,10 @@ public class MembreDotationUCARech {
 	private String dotationMembre;
 
 	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	private Membre membre;
 	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	private DotationUCARech dotationUCARech;
 
 }
