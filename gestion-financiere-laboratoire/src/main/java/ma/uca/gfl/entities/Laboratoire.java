@@ -8,8 +8,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -23,11 +21,13 @@ public class Laboratoire {
 	private String departement;
 
 	@ManyToOne
+    @JoinColumn(name = "etablissement_id")
 	@JsonIgnoreProperties("laboratoires")
 	private Etablissement etablissement;
 
 	@OneToMany(mappedBy = "laboratoire", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonIgnoreProperties("laboratoire")
 	private List<Membre> membres;
 
 }
