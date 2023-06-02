@@ -3,11 +3,10 @@ package ma.uca.gfl.entities;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -18,13 +17,14 @@ public class Membre {
 	private String nom;
 	private String prenom;
 	@Temporal(TemporalType.DATE)
-	private Date dateNaissane;
+	private Date dateNaissance;
 	private String email;
 	private String telephone;
-	private boolean isDirecteur;
+	private boolean directeur;
 
 	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+//	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	@JsonIgnoreProperties("membres")
 	private Laboratoire laboratoire;
 
 	@OneToMany(mappedBy = "membre", cascade = CascadeType.ALL)
