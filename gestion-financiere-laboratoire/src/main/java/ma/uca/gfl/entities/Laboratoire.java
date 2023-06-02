@@ -23,7 +23,10 @@ public class Laboratoire {
 	private String departement;
 
 	@ManyToOne
+<<<<<<< HEAD
 //	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+=======
+>>>>>>> 95ccfcc7d97cdcd7370db68ec0e59e1a324033eb
 	@JsonIgnoreProperties("laboratoires")
 	private Etablissement etablissement;
 

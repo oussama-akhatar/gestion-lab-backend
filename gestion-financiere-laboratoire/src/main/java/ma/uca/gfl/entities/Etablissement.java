@@ -18,7 +18,13 @@ public class Etablissement {
 	private String adresse;
 
 
+<<<<<<< HEAD
 //	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+=======
+//	@OneToMany(mappedBy = "etablissement", cascade = CascadeType.ALL)
+//	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
+>>>>>>> 95ccfcc7d97cdcd7370db68ec0e59e1a324033eb
 	@OneToMany(mappedBy = "etablissement" ,cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("etablissement")
 	private List<Laboratoire> laboratoires;
