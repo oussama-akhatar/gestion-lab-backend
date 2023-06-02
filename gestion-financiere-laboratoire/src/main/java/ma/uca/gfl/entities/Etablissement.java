@@ -3,6 +3,7 @@ package ma.uca.gfl.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class Etablissement {
 	private String adresse;
 
 	@OneToMany(mappedBy = "etablissement" ,cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonIgnoreProperties("etablissement")
 	private List<Laboratoire> laboratoires;
 
 }
