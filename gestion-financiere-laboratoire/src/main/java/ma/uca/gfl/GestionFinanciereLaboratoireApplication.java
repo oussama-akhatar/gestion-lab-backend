@@ -11,9 +11,9 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class GestionFinanciereLaboratoireApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(GestionFinanciereLaboratoireApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GestionFinanciereLaboratoireApplication.class, args);
+    }
 
 	@Bean
 	public CorsFilter corsFilter() {

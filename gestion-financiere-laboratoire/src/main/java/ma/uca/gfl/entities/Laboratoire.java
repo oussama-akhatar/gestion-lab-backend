@@ -2,6 +2,7 @@ package ma.uca.gfl.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,8 @@ public class Laboratoire {
 	private String departement;
 
 	@ManyToOne
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+//	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	@JsonIgnoreProperties("laboratoires")
 	private Etablissement etablissement;
 
 	@OneToMany(mappedBy = "laboratoire", cascade = CascadeType.ALL)
