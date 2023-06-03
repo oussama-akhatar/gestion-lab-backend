@@ -1,6 +1,8 @@
 package ma.uca.gfl.services;
 
 import ma.uca.gfl.entities.Responsable;
+import ma.uca.gfl.entities.ResponsableAffaireFinanciere;
+import ma.uca.gfl.entities.ResponsableMarche;
 import ma.uca.gfl.repositories.ResponsableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,30 +12,31 @@ import java.util.List;
 
 @Service
 public class ResponsableService {
-    private final ResponsableRepository responsableRepository;
-    @Autowired
-    public ResponsableService(ResponsableRepository responsableRepository) {
-        this.responsableRepository = responsableRepository;
-    }
+	private ResponsableRepository responsableRepository;
 
-    public Responsable addResponsable(Responsable responsable){
-        return responsableRepository.save(responsable);
-    }
+//    @Autowired
+	public ResponsableService(ResponsableRepository responsableRepository) {
+		this.responsableRepository = responsableRepository;
+	}
 
-    public List<Responsable> findAllResponsables(){
-        return responsableRepository.findAll();
-    }
+	public Responsable addResponsable(Responsable responsable) {
+		return responsableRepository.save(responsable);
+	}
 
-    public Responsable updateResponsable(Responsable responsable){
-        return responsableRepository.save(responsable);
-    }
+	public List<Responsable> findAllResponsables() {
+		return responsableRepository.findAll();
+	}
 
-    public Responsable findResponsableById(Long id){
-        return responsableRepository.findResponsableById(id).orElseThrow();
-    }
+	public Responsable updateResponsable(Responsable responsable) {
+		return responsableRepository.save(responsable);
+	}
 
-    @Transactional
-    public void deleteResponsable(Long id) {
-        responsableRepository.deleteResponsableById(id);
-    }
+	public Responsable findResponsableById(Long id) {
+		return responsableRepository.findResponsableById(id).orElseThrow();
+	}
+
+	@Transactional
+	public void deleteResponsable(Long id) {
+		responsableRepository.deleteResponsableById(id);
+	}
 }
