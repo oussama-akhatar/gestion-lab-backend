@@ -6,11 +6,10 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
+import ma.uca.gfl.enums.TypeResponsabilite;
 
 @Entity
 @Data
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TYPE", length = 4, discriminatorType = DiscriminatorType.STRING)
 public class Responsable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +20,8 @@ public class Responsable {
 	private Date dateNaissance;
 	private String email;
 	private String telephone;
-	@Column(insertable = false, updatable = false)
-	private String type;
+	@Enumerated(EnumType.STRING)
+	private TypeResponsabilite typeResponsabilite;
 
 	@OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

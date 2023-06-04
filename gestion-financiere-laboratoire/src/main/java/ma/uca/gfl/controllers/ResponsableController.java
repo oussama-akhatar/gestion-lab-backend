@@ -4,6 +4,8 @@ import ma.uca.gfl.entities.Responsable;
 import ma.uca.gfl.entities.ResponsableAffaireFinanciere;
 import ma.uca.gfl.entities.ResponsableMarche;
 import ma.uca.gfl.services.ResponsableService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import java.util.List;
 public class ResponsableController {
 	private final ResponsableService responsableService;
 
+	@Autowired
 	public ResponsableController(ResponsableService responsableService) {
 		this.responsableService = responsableService;
 	}
@@ -33,34 +36,14 @@ public class ResponsableController {
 
 	@PostMapping("/add")
 	public ResponseEntity<Responsable> addResponsable(@RequestBody Responsable responsable) {
-		Responsable newResponsable = new Responsable();
-		if (responsable.getType().equals("RA")) {
-			ResponsableAffaireFinanciere responsableAffaireFinanciere = new ResponsableAffaireFinanciere();
-			responsableAffaireFinanciere.setNom(responsable.getNom());
-			responsableAffaireFinanciere.setPrenom(responsable.getPrenom());
-			responsableAffaireFinanciere.setDateNaissance(responsable.getDateNaissance());
-			responsableAffaireFinanciere.setEmail(responsable.getEmail());
-			responsableAffaireFinanciere.setTelephone(responsable.getTelephone());
-			newResponsable = responsableService.addResponsable(responsableAffaireFinanciere);
-		} else if (responsable.getType().equals("RM")) {
-			ResponsableMarche responsableMarche = new ResponsableMarche();
-			responsableMarche.setNom(responsable.getNom());
-			responsableMarche.setPrenom(responsable.getPrenom());
-			responsableMarche.setDateNaissance(responsable.getDateNaissance());
-			responsableMarche.setEmail(responsable.getEmail());
-			responsableMarche.setTelephone(responsable.getTelephone());
-			newResponsable = responsableService.addResponsable(responsableMarche);
-		} else {
-			throw new IllegalArgumentException("Unsupported type of Responsable");
-		}
-
+		Responsable newResponsable = responsableService.saveResponsable(responsable);
 		return new ResponseEntity<>(newResponsable, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update")
 	public ResponseEntity<Responsable> updateResponsable(@RequestBody Responsable responsable) {
-		Responsable updateResponsable = responsableService.updateResponsable(responsable);
-		return new ResponseEntity<>(updateResponsable, HttpStatus.OK);
+		Responsable updatedResponsable = responsableService.saveResponsable(responsable);
+		return new ResponseEntity<>(updatedResponsable, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete/{id}")

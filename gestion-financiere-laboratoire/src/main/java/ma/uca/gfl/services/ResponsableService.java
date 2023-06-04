@@ -19,7 +19,7 @@ public class ResponsableService {
 		this.responsableRepository = responsableRepository;
 	}
 
-	public Responsable addResponsable(Responsable responsable) {
+	public Responsable saveResponsable(Responsable responsable) {
 		return responsableRepository.save(responsable);
 	}
 
@@ -27,12 +27,8 @@ public class ResponsableService {
 		return responsableRepository.findAll();
 	}
 
-	public Responsable updateResponsable(Responsable responsable) {
-		return responsableRepository.save(responsable);
-	}
-
 	public Responsable findResponsableById(Long id) {
-		return responsableRepository.findResponsableById(id).orElseThrow();
+		return responsableRepository.findResponsableById(id).orElse(null);
 	}
 
 	@Transactional
