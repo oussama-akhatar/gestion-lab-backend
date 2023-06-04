@@ -15,7 +15,7 @@ public class MembreProjet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String dotateurProjet;
-	private boolean isResponsableProjet;
+	private boolean responsableProjet;
 
 	@ManyToOne
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
