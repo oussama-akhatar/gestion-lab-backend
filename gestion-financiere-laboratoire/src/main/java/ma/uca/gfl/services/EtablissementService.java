@@ -11,12 +11,12 @@ import java.util.List;
 @Service
 public class EtablissementService {
 	
-	@Autowired
 	private EtablissementRepository etablissementRepository;
 
-//	public EtablissementService(EtablissementRepository etablissementRepository) {
-//		this.etablissementRepository = etablissementRepository;
-//	}
+	@Autowired
+	public EtablissementService(EtablissementRepository etablissementRepository) {
+		this.etablissementRepository = etablissementRepository;
+	}
 
 	public Etablissement addEtablissement(Etablissement etablissement) {
 		return etablissementRepository.save(etablissement);

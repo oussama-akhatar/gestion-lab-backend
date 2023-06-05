@@ -6,8 +6,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -24,5 +22,5 @@ public class Projet {
 
 	@OneToMany(mappedBy = "projet", cascade = CascadeType.ALL)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	private List<MembreProjet> membreProjets;
+	private List<ProjetMembre> projetMembres;
 }

@@ -33,7 +33,7 @@ public class Membre {
 
 	@OneToMany(mappedBy = "membre", cascade = CascadeType.ALL)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	private List<MembreProjet> membreProjets;
+	private List<ProjetMembre> projetMembres;
 
 	@OneToMany(mappedBy = "membre", cascade = CascadeType.ALL)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
