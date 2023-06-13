@@ -14,7 +14,7 @@ public class MembreDotationUCARech {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String dotationMembre;
+	private double dotationMembre;
 
 	@ManyToOne
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)

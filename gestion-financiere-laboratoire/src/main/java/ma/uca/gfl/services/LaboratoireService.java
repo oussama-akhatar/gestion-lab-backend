@@ -1,6 +1,7 @@
 package ma.uca.gfl.services;
 
 import ma.uca.gfl.entities.Laboratoire;
+import ma.uca.gfl.entities.Membre;
 import ma.uca.gfl.repositories.LaboratoireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

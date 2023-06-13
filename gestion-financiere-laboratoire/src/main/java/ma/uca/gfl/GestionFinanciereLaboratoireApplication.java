@@ -1,5 +1,8 @@
 package ma.uca.gfl;
 
+import ma.uca.gfl.entities.Laboratoire;
+import ma.uca.gfl.repositories.LaboratoireRepository;
+import ma.uca.gfl.repositories.MembreRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,22 +11,13 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import ma.uca.gfl.entities.Responsable;
-import ma.uca.gfl.entities.ResponsableAffaireFinanciere;
-import ma.uca.gfl.entities.ResponsableMarche;
-import ma.uca.gfl.enums.TypeResponsabilite;
-import ma.uca.gfl.services.ResponsableService;
-
 import java.util.Arrays;
-import java.util.Date;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class GestionFinanciereLaboratoireApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestionFinanciereLaboratoireApplication.class, args);
 	}
-
 	@Bean
 	public CorsFilter corsFilter() {
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();

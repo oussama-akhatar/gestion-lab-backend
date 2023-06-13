@@ -1,5 +1,6 @@
 package ma.uca.gfl.controllers;
 
+import ma.uca.gfl.entities.Laboratoire;
 import ma.uca.gfl.entities.Membre;
 import ma.uca.gfl.services.MembreService;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,16 @@ public class MembreController {
     @GetMapping("/all")
     public ResponseEntity<List<Membre>> getAllMembres() {
         List<Membre> membres = membreService.findAllMembres();
+        return new ResponseEntity<>(membres, HttpStatus.OK);
+    }
+    @GetMapping("/all/{id}")
+    public ResponseEntity<List<Membre>> findAllByLaboratoire(@PathVariable Long id) {
+        List<Membre> membres = membreService.findAllByLaboratoire(id);
+        return new ResponseEntity<>(membres, HttpStatus.OK);
+    }
+    @GetMapping("/allDirecteurs")
+    public ResponseEntity<List<Membre>> getAllDirecteurs() {
+        List<Membre> membres = membreService.findAllDirecteurs();
         return new ResponseEntity<>(membres, HttpStatus.OK);
     }
     @PostMapping("/add")

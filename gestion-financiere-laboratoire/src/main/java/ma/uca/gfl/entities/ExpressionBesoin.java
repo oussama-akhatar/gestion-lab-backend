@@ -22,15 +22,15 @@ public class ExpressionBesoin {
 	private Date dateValidation;
 
 	@ManyToOne
-	@JsonIgnoreProperties(value = "expressionBesoins", allowSetters = true)
+	@JsonIgnoreProperties(value = "expressionBesoins")
 	private Membre membre;
 
 	@ManyToOne
-	@JsonIgnoreProperties(value = "expressionBesoins", allowSetters = true)
+	@JsonIgnoreProperties(value = "expressionBesoins")
 	private TypeBesoin typeBesoin;
 
 	@ManyToOne
-	@JsonIgnoreProperties(value = "expressionBesoins", allowSetters = true)
+	@JsonIgnoreProperties(value = "expressionBesoins")
 	private Responsable responsable;
 
 }
