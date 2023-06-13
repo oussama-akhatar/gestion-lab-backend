@@ -3,6 +3,8 @@ package ma.uca.gfl.services;
 import ma.uca.gfl.entities.Etablissement;
 import ma.uca.gfl.repositories.EtablissementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +27,10 @@ public class EtablissementService {
 	public List<Etablissement> findAllEtablissements() {
 		return etablissementRepository.findAll();
 	}
+	
+	public Page<Etablissement> getEtablissements(Pageable pageable) {
+        return etablissementRepository.findAll(pageable);
+    }
 
 	public Etablissement updateEtablissement(Etablissement etablissement) {
 		return etablissementRepository.save(etablissement);
