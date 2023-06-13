@@ -16,10 +16,9 @@ import java.util.List;
 public class ExpressionBesoinController {
 
 	private final ExpressionBesoinService expressionBesoinService;
-	private ResponsableService responsableService;
+	private final ResponsableService responsableService;
 
-	public ExpressionBesoinController(ExpressionBesoinService expressionBesoinService,
-			ResponsableService responsableService) {
+	public ExpressionBesoinController(ExpressionBesoinService expressionBesoinService, ResponsableService responsableService) {
 		this.expressionBesoinService = expressionBesoinService;
 		this.responsableService = responsableService;
 	}

@@ -33,8 +33,18 @@ public class ExpressionBesoinService {
 
 	public ExpressionBesoin updateExpressionBesoin(ExpressionBesoin expressionBesoin) {
 		ExpressionBesoin eb = expressionBesoinRepository.findById(expressionBesoin.getId()).orElse(null);
-		eb.setMontantEffectif(expressionBesoin.getMontantEffectif());
-		eb.setDateValidation(new Date());
+		if (eb.getDateValidation() == null) {
+			eb.setDateValidation(expressionBesoin.getDateValidation());
+		}
+		if (eb.getMontantEffectif() >= 0) {
+			eb.setMontantEffectif(expressionBesoin.getMontantEffectif());
+		}
+		if (eb.getResponsable() == null){
+			eb.setResponsable(expressionBesoin.getResponsable());
+		}
+		if (!eb.isValiderDirecteur()) {
+			eb.setValiderDirecteur(expressionBesoin.isValiderDirecteur());
+		}
 		return expressionBesoinRepository.save(eb);
 	}
 
