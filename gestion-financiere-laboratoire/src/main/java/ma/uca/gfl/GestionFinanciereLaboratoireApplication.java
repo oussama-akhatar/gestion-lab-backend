@@ -12,6 +12,7 @@ import ma.uca.gfl.entities.Responsable;
 import ma.uca.gfl.entities.ResponsableAffaireFinanciere;
 import ma.uca.gfl.entities.ResponsableMarche;
 import ma.uca.gfl.enums.TypeResponsabilite;
+import ma.uca.gfl.services.ExpressionBesoinService;
 import ma.uca.gfl.services.ResponsableService;
 
 import java.util.Arrays;
@@ -23,6 +24,40 @@ public class GestionFinanciereLaboratoireApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestionFinanciereLaboratoireApplication.class, args);
 	}
+
+//	@Bean
+	CommandLineRunner run(ResponsableService responsableService) {
+		return args -> {
+			Stream.of("Salah", "Soul", "Aya").forEach(name -> {
+				Responsable responsable = new Responsable();
+				responsable.setNom(name);
+				responsable.setPrenom(name);
+				responsable.setEmail(name + "@gmail.com");
+				responsable.setDateNaissance(new Date());
+				responsable.setTelephone("0645876534");
+				responsable.setTypeResponsabilite(TypeResponsabilite.RAF);
+				responsableService.saveResponsable(responsable);
+			});
+			responsableService.findAllResponsables().forEach(resp -> {
+
+				if (resp.getTypeResponsabilite().equals(TypeResponsabilite.RAF))
+					System.out.println("RAF: " + resp.getNom());
+				else
+					System.out.println("RM: " + resp.getNom());
+			});
+		};
+	}
+
+//	@Bean
+//	CommandLineRunner start(ExpressionBesoinService expressionBesoinService,
+//			ResponsableService responsableService) {
+//		return args -> {
+//			Responsable rs = responsableService.findResponsableById(2L);
+//			expressionBesoinService.findByResponsable(rs).forEach(eb -> {
+//				System.out.println(eb.getDescription());
+//			});
+//		};
+//	}
 
 	@Bean
 	public CorsFilter corsFilter() {

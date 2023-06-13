@@ -1,6 +1,9 @@
 package ma.uca.gfl.services;
 
+import ma.uca.gfl.entities.ExpressionBesoin;
 import ma.uca.gfl.entities.Responsable;
+import ma.uca.gfl.enums.TypeResponsabilite;
+import ma.uca.gfl.repositories.ExpressionBesoinRepository;
 import ma.uca.gfl.repositories.ResponsableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +15,7 @@ import java.util.List;
 public class ResponsableService {
 	private final ResponsableRepository responsableRepository;
 
-    @Autowired
+	@Autowired
 	public ResponsableService(ResponsableRepository responsableRepository) {
 		this.responsableRepository = responsableRepository;
 	}
@@ -24,6 +27,7 @@ public class ResponsableService {
 	public List<Responsable> findAllResponsables() {
 		return responsableRepository.findAll();
 	}
+
 
 	public Responsable findResponsableById(Long id) {
 		return responsableRepository.findResponsableById(id).orElse(null);

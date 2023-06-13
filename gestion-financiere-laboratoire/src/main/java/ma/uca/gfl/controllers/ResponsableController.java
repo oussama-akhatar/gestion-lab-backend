@@ -10,17 +10,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import lombok.AllArgsConstructor;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/responsable")
+@AllArgsConstructor
 public class ResponsableController {
 	private final ResponsableService responsableService;
 
-	@Autowired
-	public ResponsableController(ResponsableService responsableService) {
-		this.responsableService = responsableService;
-	}
+//	@Autowired
+//	public ResponsableController(ResponsableService responsableService) {
+//		this.responsableService = responsableService;
+//	}
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Responsable>> getAllResponsables() {

@@ -3,6 +3,7 @@ package ma.uca.gfl.entities;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class Responsable {
 	private TypeResponsabilite typeResponsabilite;
 
 	@OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonIgnoreProperties("responsable")
 	private List<ExpressionBesoin> expressionBesoins;
 }
