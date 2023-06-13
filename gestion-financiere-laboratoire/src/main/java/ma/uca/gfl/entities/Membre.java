@@ -19,6 +19,7 @@ public class Membre {
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	private String email;
+	private String password;
 	private String telephone;
 	private boolean directeur;
 
@@ -36,7 +37,7 @@ public class Membre {
 	private List<ProjetMembre> projetMembres;
 
 	@OneToMany(mappedBy = "membre", cascade = CascadeType.ALL)
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonIgnoreProperties("membre")
 	private List<ExpressionBesoin> expressionBesoins;
 
 }

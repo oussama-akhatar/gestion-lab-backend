@@ -1,8 +1,6 @@
 package ma.uca.gfl.services;
 
 import ma.uca.gfl.entities.Responsable;
-import ma.uca.gfl.entities.ResponsableAffaireFinanciere;
-import ma.uca.gfl.entities.ResponsableMarche;
 import ma.uca.gfl.repositories.ResponsableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +10,9 @@ import java.util.List;
 
 @Service
 public class ResponsableService {
-	private ResponsableRepository responsableRepository;
+	private final ResponsableRepository responsableRepository;
 
-//    @Autowired
+    @Autowired
 	public ResponsableService(ResponsableRepository responsableRepository) {
 		this.responsableRepository = responsableRepository;
 	}

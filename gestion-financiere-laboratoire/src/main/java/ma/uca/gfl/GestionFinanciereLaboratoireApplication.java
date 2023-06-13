@@ -24,29 +24,6 @@ public class GestionFinanciereLaboratoireApplication {
 		SpringApplication.run(GestionFinanciereLaboratoireApplication.class, args);
 	}
 
-//	@Bean
-	CommandLineRunner run(ResponsableService responsableService) {
-		return args -> {
-			Stream.of("Salah", "Soul", "Aya").forEach(name -> {
-				Responsable responsable = new Responsable();
-				responsable.setNom(name);
-				responsable.setPrenom(name);
-				responsable.setEmail(name + "@gmail.com");
-				responsable.setDateNaissance(new Date());
-				responsable.setTelephone("0645876534");
-				responsable.setTypeResponsabilite(TypeResponsabilite.RAF);
-				responsableService.saveResponsable(responsable);
-			});
-			responsableService.findAllResponsables().forEach(resp -> {
-
-				if (resp.getTypeResponsabilite().equals(TypeResponsabilite.RAF))
-					System.out.println("RAF: " + resp.getNom());
-				else
-					System.out.println("RM: " + resp.getNom());
-			});
-		};
-	}
-
 	@Bean
 	public CorsFilter corsFilter() {
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
