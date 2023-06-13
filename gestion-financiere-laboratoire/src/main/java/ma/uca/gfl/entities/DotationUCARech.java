@@ -15,7 +15,7 @@ public class DotationUCARech {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String annee;
-	private String dotateurBase;
+	private double dotateurBase;
 
 	@OneToMany(mappedBy = "dotationUCARech", cascade = CascadeType.ALL)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

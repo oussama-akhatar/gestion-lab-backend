@@ -1,5 +1,6 @@
 package ma.uca.gfl.services;
 
+import ma.uca.gfl.entities.Laboratoire;
 import ma.uca.gfl.entities.Membre;
 import ma.uca.gfl.repositories.MembreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,14 @@ public class MembreService {
 
     public List<Membre> findAllMembres() {
         return membreRepository.findAll();
+    }
+
+    public List<Membre> findAllByLaboratoire(Long id) {
+        return membreRepository.findAllByLaboratoire(id);
+    }
+
+    public List<Membre> findAllDirecteurs() {
+        return membreRepository.findAllByDirecteurIsTrue();
     }
 
     public Membre updateMembre(Membre membre) {

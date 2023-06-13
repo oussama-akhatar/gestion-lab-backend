@@ -1,5 +1,8 @@
 package ma.uca.gfl;
 
+import ma.uca.gfl.entities.Laboratoire;
+import ma.uca.gfl.repositories.LaboratoireRepository;
+import ma.uca.gfl.repositories.MembreRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

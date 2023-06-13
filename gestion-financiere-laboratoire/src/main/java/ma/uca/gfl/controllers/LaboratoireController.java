@@ -1,6 +1,7 @@
 package ma.uca.gfl.controllers;
 
 import ma.uca.gfl.entities.Laboratoire;
+import ma.uca.gfl.entities.Membre;
 import ma.uca.gfl.services.LaboratoireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ public class LaboratoireController {
         List<Laboratoire> laboratoires = laboratoireService.findAllLaboratoires();
         return new ResponseEntity<>(laboratoires, HttpStatus.OK);
     }
+
     @PostMapping("/add")
     public ResponseEntity<Laboratoire> addLaboratoire(@RequestBody Laboratoire laboratoire) {
         Laboratoire newLaboratoire = laboratoireService.addLaboratoire(laboratoire);
