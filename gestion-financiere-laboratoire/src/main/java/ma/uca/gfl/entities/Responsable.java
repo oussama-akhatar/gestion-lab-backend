@@ -19,6 +19,7 @@ public class Responsable {
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	private String email;
+	private String password;
 	private String telephone;
 	@Enumerated(EnumType.STRING)
 	private TypeResponsabilite typeResponsabilite;
