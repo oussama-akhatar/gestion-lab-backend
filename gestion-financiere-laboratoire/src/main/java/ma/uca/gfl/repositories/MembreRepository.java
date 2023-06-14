@@ -13,7 +13,6 @@ public interface MembreRepository extends JpaRepository<Membre,Long> {
     Optional<Membre> findMembreById(Long id);
     void deleteMembreById(Long id);
     List<Membre> findAllByDirecteurIsTrue();
-
     @Query("SELECT m FROM Membre m WHERE m.laboratoire.id = :id AND m.directeur=false ")
     List<Membre> findAllByLaboratoire(@Param("id") Long id);
 }
