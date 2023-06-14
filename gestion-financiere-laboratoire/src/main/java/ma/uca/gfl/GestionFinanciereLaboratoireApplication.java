@@ -1,8 +1,9 @@
 package ma.uca.gfl;
 
-import ma.uca.gfl.entities.Laboratoire;
-import ma.uca.gfl.repositories.LaboratoireRepository;
-import ma.uca.gfl.repositories.MembreRepository;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.stream.Stream;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,16 +12,16 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import ma.uca.gfl.entities.Etablissement;
+import ma.uca.gfl.entities.Laboratoire;
+import ma.uca.gfl.entities.Membre;
 import ma.uca.gfl.entities.Responsable;
-import ma.uca.gfl.entities.ResponsableAffaireFinanciere;
-import ma.uca.gfl.entities.ResponsableMarche;
 import ma.uca.gfl.enums.TypeResponsabilite;
-import ma.uca.gfl.services.ExpressionBesoinService;
+import ma.uca.gfl.repositories.MembreRepository;
+import ma.uca.gfl.services.EtablissementService;
+import ma.uca.gfl.services.LaboratoireService;
+import ma.uca.gfl.services.MembreService;
 import ma.uca.gfl.services.ResponsableService;
-
-import java.util.Arrays;
-import java.util.Date;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class GestionFinanciereLaboratoireApplication {
@@ -28,39 +29,60 @@ public class GestionFinanciereLaboratoireApplication {
 		SpringApplication.run(GestionFinanciereLaboratoireApplication.class, args);
 	}
 
-//	@Bean
-	CommandLineRunner run(ResponsableService responsableService) {
+	@Bean
+	CommandLineRunner run(ResponsableService responsableService, EtablissementService etablissementService,
+			LaboratoireService laboratoireService, MembreService membreService, MembreRepository membreRepository) {
 		return args -> {
-			Stream.of("Salah", "Soul", "Aya").forEach(name -> {
-				Responsable responsable = new Responsable();
-				responsable.setNom(name);
-				responsable.setPrenom(name);
-				responsable.setEmail(name + "@gmail.com");
-				responsable.setDateNaissance(new Date());
-				responsable.setTelephone("0645876534");
-				responsable.setTypeResponsabilite(TypeResponsabilite.RAF);
-				responsableService.saveResponsable(responsable);
-			});
-			responsableService.findAllResponsables().forEach(resp -> {
 
-				if (resp.getTypeResponsabilite().equals(TypeResponsabilite.RAF))
-					System.out.println("RAF: " + resp.getNom());
-				else
-					System.out.println("RM: " + resp.getNom());
-			});
+//			System.out.println(membreRepository.getDotationMembre(1L));
+//			Stream.of("FSSM", "FST", "ENSA").forEach(etab -> {
+//
+//				Etablissement etablissement = new Etablissement();
+//				etablissement.setIntitule(etab);
+//				etablissement.setAdresse("Adresse " + etab.toLowerCase());
+//				etablissementService.addEtablissement(etablissement);
+//			});
+
+//			Stream.of("Lab Info", "Lab Ch", "Lab Pc", "Lab Elec").forEach(lab -> {
+//				Laboratoire laboratoire = new Laboratoire();
+//				laboratoire.setIntitule(lab);
+//				laboratoire.setDepartement("Physique");
+//				laboratoire.setEtablissement(etablissementService.findEtablissementById(1L));
+//				laboratoireService.addLaboratoire(laboratoire);
+//			});
+
+//			Stream.of("Membre1", "Soul", "Yasmine", "Oussama", "Ahmed").forEach(memb -> {
+//				Membre membre = new Membre();
+//				Laboratoire lab = laboratoireService.findLaboratoireById(1L);
+//				membre.setLaboratoire(lab);
+//				membre.setNom("Al " + memb);
+//				membre.setPrenom(memb);
+//				membre.setEmail(memb + "@gmail.com");
+//				membre.setPassword("123");
+//				membre.setDateNaissance(new Date());
+//				membre.setTelephone("061223345");
+//				membreService.addMembre(membre);
+//			});
+
+//			Stream.of("Salah", "Soul", "Aya").forEach(name -> {
+//				Responsable responsable = new Responsable();
+//				responsable.setNom(name);
+//				responsable.setPrenom(name);
+//				responsable.setEmail(name + "@gmail.com");
+//				responsable.setDateNaissance(new Date());
+//				responsable.setTelephone("0645876534");
+//				responsable.setTypeResponsabilite(TypeResponsabilite.RAF);
+//				responsableService.saveResponsable(responsable);
+//			});
+//			responsableService.findAllResponsables().forEach(resp -> {
+//
+//				if (resp.getTypeResponsabilite().equals(TypeResponsabilite.RAF))
+//					System.out.println("RAF: " + resp.getNom());
+//				else
+//					System.out.println("RM: " + resp.getNom());
+//			});
 		};
 	}
-
-//	@Bean
-//	CommandLineRunner start(ExpressionBesoinService expressionBesoinService,
-//			ResponsableService responsableService) {
-//		return args -> {
-//			Responsable rs = responsableService.findResponsableById(2L);
-//			expressionBesoinService.findByResponsable(rs).forEach(eb -> {
-//				System.out.println(eb.getDescription());
-//			});
-//		};
-//	}
 
 	@Bean
 	public CorsFilter corsFilter() {

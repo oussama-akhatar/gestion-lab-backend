@@ -9,11 +9,17 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface MembreRepository extends JpaRepository<Membre,Long> {
-    Optional<Membre> findMembreById(Long id);
-    void deleteMembreById(Long id);
-    List<Membre> findAllByDirecteurIsTrue();
+public interface MembreRepository extends JpaRepository<Membre, Long> {
+	Optional<Membre> findMembreById(Long id);
 
-    @Query("SELECT m FROM Membre m WHERE m.laboratoire.id = :id AND m.directeur=false ")
-    List<Membre> findAllByLaboratoire(@Param("id") Long id);
+	void deleteMembreById(Long id);
+
+	List<Membre> findAllByDirecteurIsTrue();
+
+	@Query("SELECT m FROM Membre m WHERE m.laboratoire.id = :id AND m.directeur=false ")
+	List<Membre> findAllByLaboratoire(@Param("id") Long id);
+
+	@Query("SELECT md.dotationMembre From MembreDotationUCARech md, Membre m WHERE md.membre = m"
+			+ " AND m.id=:id")
+	double getDotationMembre(@Param("id") long id);
 }

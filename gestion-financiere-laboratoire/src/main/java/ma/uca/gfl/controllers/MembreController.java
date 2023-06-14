@@ -13,47 +13,51 @@ import java.util.List;
 @RequestMapping("/membre")
 public class MembreController {
 
-    private final MembreService membreService;
+	private final MembreService membreService;
 
-    public MembreController(MembreService membreService) {
-        this.membreService = membreService;
-    }
+	public MembreController(MembreService membreService) {
+		this.membreService = membreService;
+	}
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Membre>> getAllMembres() {
-        List<Membre> membres = membreService.findAllMembres();
-        return new ResponseEntity<>(membres, HttpStatus.OK);
-    }
-    @GetMapping("/all/{id}")
-    public ResponseEntity<List<Membre>> findAllByLaboratoire(@PathVariable Long id) {
-        List<Membre> membres = membreService.findAllByLaboratoire(id);
-        return new ResponseEntity<>(membres, HttpStatus.OK);
-    }
-    @GetMapping("/allDirecteurs")
-    public ResponseEntity<List<Membre>> getAllDirecteurs() {
-        List<Membre> membres = membreService.findAllDirecteurs();
-        return new ResponseEntity<>(membres, HttpStatus.OK);
-    }
-    @PostMapping("/add")
-    public ResponseEntity<Membre> addMembre(@RequestBody Membre membre) {
-        Membre newMembre = membreService.addMembre(membre);
-        return new ResponseEntity<>(newMembre, HttpStatus.CREATED);
-    }
+	@GetMapping("/all")
+	public ResponseEntity<List<Membre>> getAllMembres() {
+		List<Membre> membres = membreService.findAllMembres();
+		return new ResponseEntity<>(membres, HttpStatus.OK);
+	}
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Membre> getMembreById(@PathVariable("id") Long id){
-        Membre laboratoire = membreService.findMembreById(id);
-        return new ResponseEntity<>(laboratoire, HttpStatus.OK);
-    }
+	@GetMapping("/all/{id}")
+	public ResponseEntity<List<Membre>> findAllByLaboratoire(@PathVariable Long id) {
+		List<Membre> membres = membreService.findAllByLaboratoire(id);
+		return new ResponseEntity<>(membres, HttpStatus.OK);
+	}
 
-    @PutMapping("/update")
-    public ResponseEntity<Membre> updateMembre(@RequestBody Membre membre) {
-        Membre updateMembre = membreService.updateMembre(membre);
-        return new ResponseEntity<>(updateMembre, HttpStatus.OK);
-    }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteMembre(@PathVariable("id") Long id) {
-        membreService.deleteMembre(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+	@GetMapping("/allDirecteurs")
+	public ResponseEntity<List<Membre>> getAllDirecteurs() {
+		List<Membre> membres = membreService.findAllDirecteurs();
+		return new ResponseEntity<>(membres, HttpStatus.OK);
+	}
+
+	@PostMapping("/add")
+	public ResponseEntity<Membre> addMembre(@RequestBody Membre membre) {
+		Membre newMembre = membreService.addMembre(membre);
+		return new ResponseEntity<>(newMembre, HttpStatus.CREATED);
+	}
+
+	@GetMapping("/find/{id}")
+	public ResponseEntity<Membre> getMembreById(@PathVariable("id") Long id) {
+		Membre laboratoire = membreService.findMembreById(id);
+		return new ResponseEntity<>(laboratoire, HttpStatus.OK);
+	}
+
+	@PutMapping("/update")
+	public ResponseEntity<Membre> updateMembre(@RequestBody Membre membre) {
+		Membre updateMembre = membreService.updateMembre(membre);
+		return new ResponseEntity<>(updateMembre, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<?> deleteMembre(@PathVariable("id") Long id) {
+		membreService.deleteMembre(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }
